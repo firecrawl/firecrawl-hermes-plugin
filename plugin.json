@@ -1,0 +1,25 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "firecrawl-plugin",
+  "version": "1.0.0",
+  "description": "The context API for AI agents. Search the live web, scrape any page into clean Markdown or structured data, and interact with dynamic pages, plus crawl, map, monitor, research and Alexandria data providers, through the hosted Firecrawl MCP server.",
+  "author": {
+    "name": "Firecrawl",
+    "url": "https://www.firecrawl.dev",
+    "email": "help@firecrawl.dev"
+  },
+  "homepage": "https://www.firecrawl.dev",
+  "repository": "https://github.com/firecrawl/firecrawl-hermes-plugin",
+  "license": "MIT",
+  "keywords": [
+    "firecrawl",
+    "web-scraping",
+    "web-search",
+    "crawling",
+    "research",
+    "browser",
+    "alexandria",
+    "mcp",
+    "hermes"
+  ]
+}
