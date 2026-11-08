@@ -35,8 +35,8 @@ do not invent provider names, capability names, or required inputs.
 
 Check the capability's stated price and external effects against the user's
 request before execution. If access is unavailable or no capability fits,
-continue with suitable web sources without representing a catalogue entry as
-retrieved data.
+use `firecrawl_search` and `firecrawl_scrape` on suitable web sources without
+representing a catalogue entry as retrieved data.
 
 For Alexandria feedback, set `endpoint: alexandria`, omit `jobId`, and supply
 `requestedWebsite` (the website URL the user needed data from and the requested
