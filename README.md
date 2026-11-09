@@ -87,7 +87,7 @@ Ask for what you need in plain language, or start with the `get-started` skill. 
 
 ## Approvals
 
-The plugin marks the `firecrawl` server `trust: untrusted`, so Hermes asks before it runs any tool the server does not annotate as read-only: for example `firecrawl_crawl`, `firecrawl_agent`, `firecrawl_interact` (live browser actions, including form submissions) and creating, updating, running or deleting monitors (recurring jobs that spend credits). Search, scrape, map, parse and the other read-only tools run without a prompt. Approve a tool once, for the session, or always.
+The plugin marks the `firecrawl` server `trust: untrusted`, so Hermes asks before it runs any tool the server does not annotate as read-only: for example `firecrawl_crawl`, `firecrawl_interact` (live browser actions, including form submissions) and creating, updating, running or deleting monitors (recurring jobs that spend credits). Search, scrape, map, parse, research with `firecrawl_agent`, people and company lookups and the other read-only tools run without a prompt. Approve a tool once, for the session, or always.
 
 ## Capabilities
 
