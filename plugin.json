@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "firecrawl-plugin",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "The context API for AI agents. Search the live web, scrape any page into clean Markdown or structured data, and interact with dynamic pages, plus crawl, map, monitor, research and Alexandria data providers, through the hosted Firecrawl MCP server.",
   "author": {
     "name": "Firecrawl",
@@ -21,5 +21,14 @@
     "alexandria",
     "mcp",
     "hermes"
-  ]
+  ],
+  "extensions": {
+    "com.nousresearch.hermes": {
+      "servers": {
+        "firecrawl": {
+          "trust": "untrusted"
+        }
+      }
+    }
+  }
 }

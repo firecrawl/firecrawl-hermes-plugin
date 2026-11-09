@@ -49,10 +49,13 @@ mcp_servers:
   firecrawl:
     url: https://mcp.firecrawl.dev/v2/mcp-oauth
     auth: oauth
+    trust: untrusted
     strict_redirect_headers: true
     headers:
       X-Firecrawl-Origin: firecrawl-hermes-plugin
 ```
+
+Keep `trust: untrusted`: this entry replaces the plugin's server, trust setting included (see [Approvals](#approvals)).
 
 Then sign in from a terminal:
 
@@ -82,6 +85,10 @@ Ask for what you need in plain language, or start with the `get-started` skill. 
 - "Find 20 Series A fintech companies in London with their websites."
 - "Use firecrawl-deep-research to compare the three largest vector databases on pricing and limits."
 
+## Approvals
+
+The plugin marks the `firecrawl` server `trust: untrusted`, so Hermes asks before it runs any tool the server does not annotate as read-only: for example `firecrawl_crawl`, `firecrawl_agent`, `firecrawl_interact` (live browser actions, including form submissions) and creating, updating, running or deleting monitors (recurring jobs that spend credits). Search, scrape, map, parse and the other read-only tools run without a prompt. Approve a tool once, for the session, or always.
+
 ## Capabilities
 
 - **Search**: web, news and image search with query-relevant excerpts, plus matching Alexandria data providers
@@ -100,6 +107,7 @@ Ask for what you need in plain language, or start with the `get-started` skill. 
 - Sends the queries, URLs, prompts and files you ask Firecrawl to process to `https://mcp.firecrawl.dev` over HTTPS, authenticated with your OAuth sign-in or API key. Tool calls use your Firecrawl account's credits; `firecrawl_credit_usage` reports usage.
 - Sends `X-Firecrawl-Origin: firecrawl-hermes-plugin` so Firecrawl can attribute requests to this plugin. There is no separate telemetry.
 - `firecrawl_parse` uploads a local file only when you ask it to parse that file.
+- Asks Hermes to gate the server (`trust: untrusted`), so tools that change state or start credit-spending jobs need your approval first.
 - Runs no local code, shell commands, background processes or self-updater, and reads no credential files. Hermes owns the MCP connection, credentials and approvals.
 - The hosted server's tools can change independently of this package; the live tool schema is the authority.
 
