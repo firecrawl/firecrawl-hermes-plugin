@@ -92,7 +92,7 @@ The plugin marks the `firecrawl` server `trust: untrusted`, so Hermes asks befor
 ## Capabilities
 
 - **Search**: web, news and image search with query-relevant excerpts, plus matching Alexandria data providers
-- **Scrape**: any URL to clean Markdown, JSON with a schema, a grounded answer or verbatim highlights
+- **Scrape**: any URL to clean Markdown, a grounded answer or verbatim highlights
 - **Alexandria**: discover catalogued data providers and execute them for structured records
 - **People and companies**: search by title, employer, location or industry, and enrich known people or companies
 - **Agent**: autonomous multi-source collection into structured data
