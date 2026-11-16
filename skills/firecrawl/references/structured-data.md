@@ -1,40 +1,49 @@
 # Collect structured data
 
-For fields from one known page, use `firecrawl_scrape` with the `json` format.
+For fields from one known page, use `firecrawl_scrape` to read the page and
+extract the fields yourself.
 For records available through a data provider, use its published capability.
 For research spanning sources or unknown URLs, use `firecrawl_agent`.
 
 ## Fields from a known page
 
-Use `firecrawl_scrape` with `formats: ["json"]` and `jsonOptions`: a JSON
-Schema in `schema` naming only the requested fields, and an optional
-`prompt` describing what to extract. The values come back in `json`. Add
-`markdown` to `formats` when you need the page text to check them. A missing
-value can mean the page does not state it; say so rather than guessing.
+A missing value can mean the page does not state it; say so rather than guessing.
 
-Some hosts validate arguments against the published tool schema before
-sending, and that schema does not yet list the keys `jsonOptions.schema` can hold.
-If the host refuses the call for that reason, retry with `jsonOptions.prompt`
-alone and say that the output shape was not enforced.
-
-For the same fields across several known pages, reuse the schema on each page;
+For the same fields across several known pages, extract them from each page;
 see [site collection](site-collection.md).
 
 ## Data providers
 
 Search results can include provider suggestions in `data.tools`. These describe
-capabilities; they are not executed results. `firecrawl_find_tools` browses the
-provider catalogue and retrieves contracts. It does not discover this host's
-MCP tools.
+capabilities; they are not executed results. `alexandria_library_search` explores the
+provider library as read-only files with shell commands and reads contracts. It
+does not discover this host's MCP tools.
 
-Inspect the selected provider and capability with `firecrawl_find_tools` when
-the full contract is not already available. Use the returned input contract to
-build `options`, and execute with `firecrawl_scrape` using
-`alexandria: [{provider, capability, options}]`. Preserve returned identifiers;
+Inspect the selected provider and capability with `alexandria_library_search` when
+the full contract is not already available: `grep -ril "<term>" /library | head -20`
+finds capabilities, `cat /library/<category>/README.md` lists a category's providers,
+and `cat /library/<category>/<provider>/<capability>.md` reads one contract, whose
+path names the provider and capability. Use its input contract to
+build `options`, and execute with `alexandria_library_read` using
+`calls: [{provider, capability, options}]`. Preserve returned identifiers;
 do not invent provider names, capability names, or required inputs.
 
-Check the capability's stated price and external effects against the user's
-request before execution. If access is unavailable or no capability fits,
+The same commands answer the other catalogue questions. For the providers of a
+website, list the provider folders named after it, with its dots as hyphens,
+such as `ls -d /library/*/*sec-gov*`, then the providers whose README names it:
+`grep -rli "<domain>" /library --include=README.md | head -20`. For a data need
+you can only describe, `cat /library/README.md` to pick the category and grep
+several words for the need inside it, such as
+`grep -rilE "rent|lease" /library/real-estate | head -20`.
+These commands match names and text, so an empty result does not prove that no
+provider covers the need: try another word, or the name of the site, before
+concluding none does.
+
+A contract states a credit price only where its provider wrote one into the
+text; `alexandria_library_read` reports what a call charged as `creditsCost`.
+Check the stated price and external effects against the user's request before
+execution; a capability priced over the user's limit does not fit. If
+access is unavailable or no capability fits,
 use `firecrawl_search` and `firecrawl_scrape` on suitable web sources without
 representing a catalogue entry as retrieved data.
 

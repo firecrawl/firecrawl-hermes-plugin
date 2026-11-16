@@ -49,13 +49,13 @@ searches and page reads, choose the operation below directly.
   to retrieve their page content in one call.
   Results can also suggest Alexandria data-provider capabilities.
 - **Read URLs:** Use `firecrawl_scrape` to retrieve page content directly
-  from a specific URL. For structured fields from that page, request the
-  `json` format with a schema; see [structured data](references/structured-data.md).
+  from a specific URL. For structured fields from that page, read the page and
+  extract the fields yourself; see [structured data](references/structured-data.md).
 - **Read many known URLs:** call `firecrawl_scrape` per URL with the same
   options. See [site collection](references/site-collection.md).
 - **Use Alexandria providers:** for structured records, inspect a matching
-  capability with `firecrawl_find_tools` when its contract is not already
-  available, then execute it through `firecrawl_scrape`. See
+  capability with `alexandria_library_search` when its contract is not already
+  available, then execute it through `alexandria_library_read`. See
   [structured data](references/structured-data.md) for discovery and execution.
 - **Find or enrich people and companies:** `people_company_search` finds
   people or companies by filters such as title, employer, location, industry
@@ -96,7 +96,7 @@ the per-provider prices in their tool descriptions, capped by `max_credits`;
 enrichment misses are free.
 
 If the user wants to browse providers or view account usage, use free
-`firecrawl_find_tools` discovery in chat for providers or report
+`alexandria_library_search` discovery in chat for providers or report
 `firecrawl_credit_usage` data for usage.
 
 ## Feedback
