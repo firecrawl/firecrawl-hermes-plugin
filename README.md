@@ -4,7 +4,7 @@
 
 <img src="assets/logo.png" alt="Firecrawl" width="96" height="96">
 
-Firecrawl is the context API for AI agents. This plugin connects [Hermes Agent](https://hermes-agent.nousresearch.com) to the hosted [Firecrawl MCP server](https://docs.firecrawl.dev/mcp-server/oauth) and adds Firecrawl skills, so Hermes can search the web, read pages, collect structured data, interact with live pages, crawl sites, run research and track changes. It is an [Agent Plugins](https://agent-plugins.org) 1.0.0 package: a manifest, an MCP connection and Markdown skills, with no local code or runtime dependencies.
+Firecrawl is knowledge infrastructure to make your agents smarter. This plugin connects [Hermes Agent](https://hermes-agent.nousresearch.com) to the hosted [Firecrawl MCP server](https://docs.firecrawl.dev/mcp-server/oauth) and adds Firecrawl skills, so Hermes can search the web, read pages, collect structured data, interact with live pages, crawl sites, run research and track changes. It is an [Agent Plugins](https://agent-plugins.org) 1.0.0 package: a manifest, an MCP connection and Markdown skills, with no local code or runtime dependencies.
 
 Hermes already ships Firecrawl as a backend for its built-in `web_search` and `web_extract` tools. This plugin is separate from that backend and does not replace it: it adds the full Firecrawl tool set (crawl, map, interact, agent, monitors, parse, Alexandria data providers, people and company search, and developer, paper and US government search) and skills that route requests to the right tool. Both can use the same `FIRECRAWL_API_KEY`.
 
